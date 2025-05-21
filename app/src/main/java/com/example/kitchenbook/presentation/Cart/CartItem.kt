@@ -31,14 +31,12 @@ import com.example.kitchenbook.data.local.entity.CartRecipe
 
 @Composable
 fun CartItem(recipe: CartRecipe, onRemove: () -> Unit, onClick: () -> Unit) {
-    Card(
-        colors = CardDefaults.cardColors(Color.White),
+    Card(colors = CardDefaults.cardColors(Color.White),
         elevation = CardDefaults.cardElevation(8.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(20.dp)
-            .clickable { onClick() }
-    ) {
+            .clickable { onClick() }) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AsyncImage(
                 model = recipe.image,

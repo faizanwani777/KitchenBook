@@ -1,4 +1,3 @@
-
 package com.example.kitchenbook.presentation.details
 
 import androidx.compose.foundation.layout.Box
@@ -17,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -69,9 +67,14 @@ fun DetailsScreen(recipeId: Int, viewModel: RecipeViewModel = hiltViewModel()) {
                     shape = RoundedCornerShape(12.dp),
                     color = Color.White,
                     tonalElevation = 2.dp,
-                    modifier = Modifier.fillMaxWidth().shadow(elevation = 8.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .shadow(elevation = 8.dp)
                 ) {
-                    Column(modifier = Modifier.padding(16.dp), horizontalAlignment =Alignment.CenterHorizontally) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         Text(
                             text = "Total Cost: \$${details.totalCost}",
                             style = MaterialTheme.typography.titleMedium
@@ -98,7 +101,7 @@ fun DetailsScreen(recipeId: Int, viewModel: RecipeViewModel = hiltViewModel()) {
                             .padding(vertical = 8.dp),
                         shape = RoundedCornerShape(12.dp),
                         colors = CardDefaults.cardColors(containerColor = Color.White),
-                        elevation = CardDefaults.cardElevation(defaultElevation =8.dp)
+                        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -116,15 +119,17 @@ fun DetailsScreen(recipeId: Int, viewModel: RecipeViewModel = hiltViewModel()) {
                             Text(
                                 text = ingredient.name,
                                 style = MaterialTheme.typography.titleMedium,
-                                maxLines = 1, // ✅ Limit to single line
-                                overflow = TextOverflow.Ellipsis, // ✅ Add ellipsis for overflow
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
                                 modifier = Modifier
-                                    .weight(1f) // ✅ Let it take available space without pushing right column
+                                    .weight(1f)
                                     .padding(end = 8.dp)
                             )
 
-                            Column(horizontalAlignment = Alignment.End,
-                                modifier = Modifier.widthIn(max = 140.dp)) {
+                            Column(
+                                horizontalAlignment = Alignment.End,
+                                modifier = Modifier.widthIn(max = 140.dp)
+                            ) {
 
                                 Spacer(modifier = Modifier.height(4.dp))
                                 Text(
@@ -148,7 +153,7 @@ fun DetailsScreen(recipeId: Int, viewModel: RecipeViewModel = hiltViewModel()) {
 
 
                 Spacer(modifier = Modifier.height(40.dp))
-                Card {Spacer(modifier = Modifier.height(40.dp))  }
+                Card { Spacer(modifier = Modifier.height(40.dp)) }
             }
         } ?: Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text("Recipe not found")

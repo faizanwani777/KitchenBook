@@ -41,14 +41,12 @@ fun RecipeItem(recipe: RecipeDto, onClick: () -> Unit) {
 
     val isAdded = cartRecipes.any { it.id == recipe.id }
 
-    Card(
-        colors = CardDefaults.cardColors(Color.White),
+    Card(colors = CardDefaults.cardColors(Color.White),
         elevation = CardDefaults.cardElevation(8.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(20.dp)
-            .clickable { onClick() }
-    ) {
+            .clickable { onClick() }) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             AsyncImage(
                 model = recipe.image,
@@ -78,8 +76,7 @@ fun RecipeItem(recipe: RecipeDto, onClick: () -> Unit) {
                             CartRecipe(recipe.id, recipe.title, recipe.image)
                         )
                     }
-                },
-                colors = ButtonDefaults.buttonColors(
+                }, colors = ButtonDefaults.buttonColors(
                     containerColor = if (isAdded) Color(0xFF4CAF50) else MaterialTheme.colorScheme.primary
                 )
             ) {
